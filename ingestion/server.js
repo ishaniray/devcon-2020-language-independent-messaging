@@ -7,7 +7,9 @@ app.get('/', (req, res) => {
 });
 
 app.post('/ingest', (req, res)=> {
-	console.log(req);
+	console.log(new Date() + ": ");
+	console.log(req.body);
+	res.sendStatus(200);
 });
  
 const port = 8080;
