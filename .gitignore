@@ -4,3 +4,5 @@
 .settings
 target
 *.log
+package-lock.json
+node_modules/
