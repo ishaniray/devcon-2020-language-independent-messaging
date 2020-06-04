@@ -29,11 +29,11 @@ public class SourceApp {
 	@Bean
 	@InboundChannelAdapter(value = Source.OUTPUT, poller = @Poller(fixedDelay = "10000", maxMessagesPerPoll = "1"))
 	public MessageSource<List<CovidPt>> timeMessageSource() {
-		logger.info("Sending list of Covid patients...");
 		return () -> MessageBuilder.withPayload(dao.getAllCovidPatients()).build();
 	}
 
 	public static void main(String[] args) {
 		SpringApplication.run(SourceApp.class, args);
+		logger.info("HERE.");
 	}
 }

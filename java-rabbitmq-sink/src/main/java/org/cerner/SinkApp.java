@@ -21,7 +21,7 @@ public class SinkApp {
 
 	private static Logger logger = LoggerFactory.getLogger(SinkApp.class);
 
-	private static final String REST_ENDPOINT = "http://629672d9246a.ngrok.io/testJsonPost";
+	private static final String REST_ENDPOINT = "http://59db2ddf62ee.ngrok.io/ingest";
 
 	@Autowired
 	private RestTemplate restTemplate;
@@ -33,7 +33,7 @@ public class SinkApp {
 
 	@StreamListener(Sink.INPUT)
 	public void loggerSink(String json) {
-		
+
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.APPLICATION_JSON);
 
@@ -42,6 +42,7 @@ public class SinkApp {
 		restTemplate.exchange(REST_ENDPOINT, HttpMethod.POST, payload, Void.class);
 
 		logger.info("Received: " + json);
+
 	}
 
 	public static void main(String[] args) {

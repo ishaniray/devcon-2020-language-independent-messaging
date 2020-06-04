@@ -31,11 +31,11 @@ public class ProcessorApp {
 	@Transformer(inputChannel = Processor.INPUT, outputChannel = Processor.OUTPUT)
 	public Object transform(List<?> patients) {
 
-		logger.debug("Input: " + patients.toString());
+		logger.info("Input: " + patients.toString());
 
 		String json = gson.toJson(patients);
 
-		logger.debug("Output: " + json);
+		logger.info("Output: " + json);
 
 		return json;
 	}
