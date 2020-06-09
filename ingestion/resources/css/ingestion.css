@@ -1,0 +1,39 @@
+hr.line {
+  border: 2px solid rgba(64, 129, 175, 0.695);
+  border-radius: 2px;
+  margin: 5px;
+}
+
+.center {
+  text-align: center;
+  color: rgb(64, 129, 175);
+  font-family: "Trebuchet MS",Helvetica,sans-serif;
+  font-size: 100px;
+}
+
+div.showcase {
+  margin-left: 2px;
+  margin-right: 50px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  float: left;
+  border: 2px solid rgba(64, 129, 175, 0.795);
+  border-radius: 5px;
+  box-shadow: 4px 4px rgba(64, 129, 175, 0.495);
+	
+}
+
+div.showcase:hover {
+  border: 2px solid rgba(64, 129, 175, 0.195);
+}
+
+div.showcase img {
+  width: 100%;
+  height: auto;
+}
+
+div.tagline {
+  padding: 15px;
+  text-align: center;
+  color: rgb(64, 129, 175);
+}

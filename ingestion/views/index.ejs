@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ingestion</title>
+        <link href="/css/ingestion.css" rel="stylesheet" type="text/css">
+        <link rel="icon" href="/images/favicon.png" type="image/png">
+    </head>
+    <body>
+
+        <div class="center">Reports</div>
+        <% var index = 1; images.forEach(function(image) { %>
+            <div class="showcase">
+                <a target="_blank" href="<%- image %>">
+                    <img src="<%- image %>" alt="Couldn't find" width="1000" height="800"/>
+                </a>
+                <hr class="line"/>
+                <div class="tagline">Report <%=index%></div>
+            </div>
+        <% ++index; }); %>
+
+    </body>
+</html>
