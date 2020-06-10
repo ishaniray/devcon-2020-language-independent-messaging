@@ -24,7 +24,7 @@ app.get('/reports', (req, res) => {
 
 		files.forEach(function (file) {
 			images.push(`/images/reports/${file}`);
-			imageNames.push(file);
+			imageNames.push(file.substring(0, file.lastIndexOf(".")));
 		});
 
 		
