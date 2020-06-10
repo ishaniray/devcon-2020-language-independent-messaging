@@ -8,15 +8,19 @@
     <body>
 
         <div class="center">Reports</div>
-        <% var index = 1; images.forEach(function(image) { %>
-            <div class="showcase">
-                <a target="_blank" href="<%- image %>">
-                    <img src="<%- image %>" alt="Couldn't find" width="1000" height="800"/>
-                </a>
-                <hr class="line"/>
-                <div class="tagline">Report <%=index%></div>
-            </div>
-        <% ++index; }); %>
+        <% if(images.length != 0) { %>
+            <% var index = 0; images.forEach(function(image) { %>
+                <div class="showcase">
+                    <a target="_blank" href="<%- image %>">
+                        <img src="<%- image %>" alt="Couldn't find" width="1000" height="800"/>
+                    </a>
+                    <hr class="line"/>
+                    <div class="tagline"><%=imageNames[index]%></div>
+                </div>
+            <% ++index; }); %>
+        <% } else { %>
+            <div class="noReports">No Reports Available</div>
+        <% } %>    
 
     </body>
 </html>

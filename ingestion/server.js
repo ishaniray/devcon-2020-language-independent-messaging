@@ -16,6 +16,7 @@ app.get('/', (req, res) => {
 
 app.get('/reports', (req, res) => {
 	var images = [];
+	var imageNames = [];
 	fs.readdir(directoryPath, function (err, files) {
 		if (err) {
 			return console.log('Unable to scan directory: ' + err);
@@ -23,10 +24,14 @@ app.get('/reports', (req, res) => {
 
 		files.forEach(function (file) {
 			images.push(`/images/reports/${file}`);
+			imageNames.push(file);
 		});
 
-		const uniqueimages = new Set(images);
-		res.render('index.ejs', { images: uniqueimages});
+		
+		res.render('index.ejs', { 
+			images: images,
+			imageNames: imageNames
+		});
 	});
 	
 });

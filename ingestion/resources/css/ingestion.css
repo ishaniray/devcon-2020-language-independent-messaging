@@ -11,6 +11,14 @@ hr.line {
   font-size: 100px;
 }
 
+.noReports {
+  text-align: center;
+  color: rgb(43, 86, 117);
+  font-family: "Trebuchet MS",Helvetica,sans-serif;
+  font-size: 50px;
+  padding: 50px 50px 50px 50px;
+}
+
 div.showcase {
   margin-left: 2px;
   margin-right: 50px;
