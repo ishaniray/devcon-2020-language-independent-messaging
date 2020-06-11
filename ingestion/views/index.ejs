@@ -9,13 +9,13 @@
 
         <div class="center">Reports</div>
         <% if(images.length != 0) { %>
-            <% var index = 0; images.forEach(function(image) { %>
+            <% var index = 1; images.forEach(function(image) { %>
                 <div class="showcase">
                     <a target="_blank" href="<%- image %>">
                         <img src="<%- image %>" alt="Couldn't find" width="1000" height="800"/>
                     </a>
                     <hr class="line"/>
-                    <div class="tagline"><%=imageNames[index]%></div>
+                    <div class="tagline">Report <%=index%></div>
                 </div>
             <% ++index; }); %>
         <% } else { %>

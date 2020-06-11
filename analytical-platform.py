@@ -1,7 +1,15 @@
 import pika, os, json
 from matplotlib import pyplot as plt
-import numpy as np
 
+font = {'family': 'serif',
+        'color':  'darkred',
+        'weight': 'normal',
+        'size': 16,
+        }
+font1 = {'family': 'serif',
+        'weight': 'normal',
+        'size': 14,
+        }
 # Access the CLODUAMQP_URL environment variable and parse it (fallback to localhost)
 url = os.environ.get('CLOUDAMQP_URL', 'amqp://guest:guest@localhost:5672/%2f')
 params = pika.URLParameters(url)
@@ -33,34 +41,45 @@ def plot(y):
                 com_and_dead=com_and_dead+1
         if (z["gender"]=='F'):
             f=f+1
-    fig = plt.figure()
-    ax = fig.add_axes([0,0,1,1])
-    ax.axis('equal')
     gender = ['Male','Female']
     students = [size-f,f]
-    ax.pie(students, labels = gender,autopct='%1.2f%%')
-    plt.savefig('ingestion/resources/images/reports/gender.png')
+    plt.title('Gender wise distribution of Cases',fontdict=font)
+    explode={0.1,0}
+    plt.pie(students, explode = explode,labels = gender,textprops={'fontsize': 14},autopct='%1.1f%%', shadow=True, startangle=140)
+    plt.savefig('ingestion/resources/images/reports/1.png')
     plt.close()
     plt.hist(age, bins=10)
-    plt.savefig('ingestion/resources/images/reports/cases.png')
+    plt.xlabel('Age group',fontdict=font1)
+    plt.ylabel('No. of Cases',fontdict=font1)
+    plt.title('No.of Cases In Each Age Group',fontdict=font)
+    plt.savefig('ingestion/resources/images/reports/4.png')
     plt.close()
-    fig = plt.figure()
-    ax = fig.add_axes([0,0,1,1])
-    ax.axis('equal')
-    gender = ['CoMorbid and Dead','CoMorbid and Alive']
+    gender = ['CoMorbid and Deceased','CoMorbid and Recovered']
     students = [com_and_dead,com-com_and_dead]
-    ax.pie(students, labels = gender,autopct='%1.2f%%')
-    plt.savefig('ingestion/resources/images/reports/Comorbidity_Dead_Alive.png')
+    plt.title('Fatality Rate amongst CoMorbidities',fontdict=font)
+    explode={0.1,0}
+    plt.pie(students,explode=explode, labels = gender,textprops={'fontsize': 14},autopct='%1.1f%%', shadow=True, startangle=140)
+    plt.savefig('ingestion/resources/images/reports/3.png')
     plt.close()
     plt.hist(dead, bins=10)
-    plt.savefig('ingestion/resources/images/reports/dead.png')
+    plt.xlabel('Age group',fontdict=font1)
+    plt.ylabel('No. of Deaths',fontdict=font1)
+    plt.title('No.of Deaths In Each Age Group',fontdict=font)
+    plt.savefig('ingestion/resources/images/reports/6.png')
     plt.close()
-    plt.hist([age, dead])
-    plt.savefig('ingestion/resources/images/reports/cases_dead_1.png')
+    labe=['No. of Cases','No. of Deaths']
+    plt.hist([age, dead],label=labe)
+    plt.xlabel('Age group',fontdict=font1)
+    plt.title('No.of Cases v/s Deaths In Each Age Group',fontdict=font)
+    plt.legend()
+    plt.savefig('ingestion/resources/images/reports/5.png')
     plt.close()
-    plt.hist(age, alpha=0.5,label='cases')
-    plt.hist(dead, alpha=0.5,label='deaths')
-    plt.savefig('ingestion/resources/images/reports/cases_dead_2.png')
+    gender = ['Recovered','Deceased']
+    students = [size-len(dead),len(dead)]
+    plt.title('Recovery Rate',fontdict=font)
+    explode={0.1,0}
+    plt.pie(students, explode = explode,labels = gender,textprops={'fontsize': 14},autopct='%1.1f%%', shadow=True, startangle=140)
+    plt.savefig('ingestion/resources/images/reports/2.png')
     plt.close()
 
 # set up subscription on the queue
